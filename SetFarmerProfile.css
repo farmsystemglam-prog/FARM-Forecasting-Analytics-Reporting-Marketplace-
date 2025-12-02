@@ -1,0 +1,248 @@
+/* ================================
+   GLOBAL
+================================ */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #F5F5F5;
+    display: flex;
+}
+
+/* ================================
+   SIDEBAR
+================================ */
+.sidebar {
+    width: 180px;
+    height: 100vh;
+    background: #e0dfdf;
+    border-right: 1px solid #ddd;
+    padding-top: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.sidebar .logo {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.sidebar .logo img {
+    width: 85px;
+    height: auto;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+.sidebar nav a {
+    padding: 14px 25px;
+    text-decoration: none;
+    font-size: 15px;
+    color: #676758;
+}
+
+.sidebar nav a.active {
+    background: #F0E89A;
+    border-radius: 6px;
+    font-weight: 600;
+    color: #676758;
+}
+
+/* ================================
+   CONTENT AREA
+================================ */
+.content {
+    flex: 1;
+    margin-left: 180px;
+    padding: 30px 50px;
+}
+
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.top-header .icons img {
+    width: 28px;
+    margin-left: 12px;
+}
+
+/* ============================================
+   WHITE BOX LAYOUT FOR FARMER PROFILE SETUP
+============================================ */
+.container {
+    background: #FFF;
+    width: 1100px;
+    margin: auto;
+    padding: 40px 50px;
+    border-radius: 10px;
+    border: 1px solid #dadada;
+    box-shadow: 0px 1px 4px rgba(0,0,0,0.12);
+}
+
+/* Single Column Layout */
+.single-column-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Section Titles */
+.form-section-title {
+    font-size: 17px;
+    font-weight: 600;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* Inputs */
+.single-column-form input,
+.single-column-form textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #d6d6d6;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+}
+
+.single-column-form textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+/* Toggle Grid Layout */
+.toggle-grid {
+    display: flex;
+    gap: 30px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.toggle-column {
+    flex: 1;
+}
+
+/* Toggle Buttons */
+.toggle-btn {
+    width: 100%;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 12px 16px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    position: relative;
+}
+
+.toggle-btn:hover {
+    background-color: #e8e8e8;
+    transform: translateY(-1px);
+}
+
+.toggle-btn.active {
+    background-color: #82A719;
+    border-color: #82A719;
+    color: white;
+    box-shadow: 0 2px 5px rgba(130, 167, 25, 0.3);
+}
+
+.toggle-btn.active:hover {
+    background-color: #769718;
+}
+
+.toggle-label {
+    font-size: 16px;
+    font-weight: 500;
+    display: block;
+}
+
+.toggle-sublabel {
+    font-size: 13px;
+    opacity: 0.7;
+    display: block;
+    margin-top: 2px;
+}
+
+.toggle-examples {
+    margin-left: 16px;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+
+.toggle-btn.active + .toggle-examples {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* ================================
+   BUTTONS
+================================ */
+.button-row {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.btn {
+    padding: 14px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    flex: 1;
+    text-align: center;
+}
+
+.cancel-btn {
+    background-color: #ff2f2f;
+    color: #ffffff;
+    border: 1px solid #ddd;
+}
+
+.cancel-btn:hover {
+    background-color: #b90000;
+}
+
+.save-btn {
+    background-color: #82A719;
+    color: white;
+}
+
+.save-btn:hover {
+    background-color: #769718;
+}
+
+/* Message styling */
+.message {
+    margin-top: 20px;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 16px;
+    text-align: center;
+    display: none;
+}
+
+.message.success {
+    background-color: #e8f5e9;
+    color: #388e3c;
+    border-left: 4px solid #388e3c;
+}
+
+.message.error {
+    background-color: #ffebee;
+    color: #d32f2f;
+    border-left: 4px solid #d32f2f;
+}

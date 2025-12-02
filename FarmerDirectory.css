@@ -1,0 +1,739 @@
+/* Reset and Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #e4e3e1;
+  font-size: 14px;
+  height: 100vh;
+  color: #3a3a3a;
+}
+
+/* Layout Grid – Right sidebar removed */
+.container {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  height: 100vh;
+}
+
+/* Sidebar Left */
+.sidebar {
+  background-color: #e4e3e1;
+  padding: 32px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sidebar .logo img {
+  width: 85px;
+  height: auto;
+  margin-left: 20px;
+}
+
+.nav-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nav-menu a {
+  font-weight: 600;
+  font-size: 15px;
+  color: #676758;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+}
+
+.nav-menu a.active,
+.nav-menu a:hover {
+  background-color: #f9f9aa;
+  color: #5a661f;
+}
+
+/* Main Content – Now full width */
+.main-content {
+  background-color: #fffdfc;
+  padding: 40px 48px 50px 48px;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* Header */
+.main-header {
+  color: #cac8bd;
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 38px;
+  border-bottom: 2px solid #989898;
+  padding-bottom: 30px;
+}
+
+/* Today's Pick Section – Expanded automatically due to grid */
+.today-pick-section {
+  width: 100%;
+}
+
+.today-pick-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 38px;
+}
+
+.today-pick-topbar h1 {
+  font-weight: 700;
+  font-size: 22px;
+  color: #454537;
+}
+
+/* Search Box */
+.search-box {
+  position: relative;
+  width: 350px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 10px 44px 10px 18px;
+  border-radius: 22px;
+  background-color: #fcfcfc;
+  border: none;
+  font-size: 14px;
+  color: #b2b1a7;
+  box-shadow: inset 0 0 9px #173b00;
+}
+
+.search-box input::placeholder {
+  color: #d2d2ce;
+}
+
+.search-box input:focus {
+  box-shadow: inset 0 0 7px #cac9bb;
+}
+
+.search-btn {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  pointer-events: none;
+}
+
+/* Product Grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 30px 20px;
+}
+
+.product-card {
+  background-color: white;
+  border-radius: 14px;
+  box-shadow: 0 4px 7px rgba(0,0,0,0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-8px); /* floating effect */
+  box-shadow: 0 8px 14px rgba(0,0,0,0.15);
+}
+
+.product-image {
+  height: 120px;
+  border-radius: 14px 14px 0 0;
+  background-size: cover;
+  background-position: center;
+}
+
+.product-card p {
+  margin-left: 12px;
+  margin-right: 12px;
+  line-height: 1.2;
+}
+
+.name {
+  font-weight: 700;
+  font-size: 22px;
+  color: #454537;
+}
+
+.owner {
+  font-size: 14px;
+  color: #bab9b3;
+}
+
+.location {
+  font-size: 14px;
+  color: #7a7a72;
+  margin-bottom: 12px;
+}
+
+/* -------- ICONS -------- */
+
+/* Make icons bigger */
+.icon-btn {
+  background-color: #e4e3e1;
+  border: none;
+  border-radius: 50%;
+  width: 58px;
+  height: 58px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color .2s;
+}
+
+.icon-btn:hover {
+  background-color: #d7d7c8;
+}
+
+/* Icon bar (Top-Right) */
+.icon-bar {
+  display: flex;
+  gap: 14px;
+  justify-content: flex-end;
+  position: absolute;
+  top: 16px;
+  right: 24px;
+  z-index: 20;
+}
+
+/* Message image button - circular */
+.message-img-btn {
+  background-color: #e4e3e1;
+  border: none;
+  border-radius: 50%; /* makes it a perfect circle */
+  width: 58px;       /* same size as profile button */
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.message-img-btn:hover {
+  background-color: #d7d7c8;
+}
+
+/* Message picture inside button */
+.message-img-btn img {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%; /* keeps the image circular */
+  object-fit: cover;
+}
+
+/* Profile image button */
+.profile-img-btn {
+  background-color: #e4e3e1;
+  border: none;
+  border-radius: 50%; /* makes it a perfect circle */
+  width: 58px;       /* same size as profile button */
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  padding-left: 10px;
+}
+
+.profile-img-btn:hover {
+  background-color: #d7d7c8;
+}
+
+/* Profile picture circle */
+.profile-img-btn img {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%; /* make the profile image a circle */
+  object-fit: cover;
+}
+
+/* Dropdown (click-based, not hover) */
+.profile-dropdown-container {
+  position: relative;
+}
+
+/* Hidden by default */
+.dropdown-menu {
+  position: absolute;
+  top: 68px;
+  right: 0;
+  background-color: #f7f7f7;
+  border: 1px solid #d2d2cc;
+  border-radius: 8px;
+  display: none;
+  flex-direction: column;
+  min-width: 140px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Dropdown Items */
+.dropdown-item {
+  padding: 12px 16px;
+  border: none;
+  background: none;
+  text-align: left;
+  font-weight: 600;
+  cursor: pointer;
+  color: #454537;
+  text-decoration: none;
+}
+
+.dropdown-item:hover {
+  background-color: #d7d7c8;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  overflow-y: auto;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 2% auto;
+  padding: 0;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 800px;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #676758;
+  cursor: pointer;
+  z-index: 1001;
+  background: none;
+  border: none;
+  transition: color 0.3s ease;
+}
+
+.close-modal:hover {
+  color: #000;
+}
+
+/* Modal Profile Section */
+.modal-profile-section {
+  display: flex;
+  padding: 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.modal-profile-left {
+  display: flex;
+  align-items: flex-start;
+  margin-right: 30px;
+}
+
+.modal-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 20px;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  font-weight: bold;
+  color: white;
+  flex-shrink: 0;
+}
+
+.modal-profile-info {
+  flex: 1;
+}
+
+.modal-profile-info h1 {
+  margin: 0 0 10px 0;
+  font-size: 24px;
+  color: #333;
+}
+
+.modal-profile-info small {
+  display: block;
+  margin-bottom: 5px;
+  color: #676758;
+  font-size: 14px;
+}
+
+.modal-profile-right {
+  flex: 1;
+}
+
+.modal-description {
+  margin-bottom: 20px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.modal-description strong {
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Move description closer to "Description" */
+.modal-description span {
+  display: block;
+  margin-top: 0;
+}
+
+/* Crop categories styling */
+.modal-categories {
+  margin-bottom: 20px;
+}
+
+.modal-categories strong {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #333;
+}
+
+.categories-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.category-tag {
+  background-color: #f0f0f0;
+  color: #676758;
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.modal-btn-group {
+  display: flex;
+  gap: 10px;
+}
+
+/* Follow button styling - yellow initially */
+.modal-btn-follow {
+  background-color: #FFEB3B; /* Yellow */
+  color: #333; /* Dark text for contrast */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 8px 15px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.modal-btn-follow:hover {
+  background-color: #FDD835; /* Darker yellow on hover */
+}
+
+.modal-btn-follow.following {
+  background-color: #4CAF50; /* Green when following */
+  color: white;
+}
+
+.modal-btn-follow.following:hover {
+  background-color: #45a049; /* Darker green */
+}
+
+.modal-btn-follow svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Message button styling - light gray */
+.modal-btn-message {
+  background-color: #e0e0e0; /* Light gray */
+  color: #333;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 8px 15px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.modal-btn-message:hover {
+  background-color: #d0d0d0; /* Slightly darker gray on hover */
+}
+
+.modal-btn-message img {
+  width: 16px;
+  height: 16px;
+}
+
+/* Modal Tabs */
+.modal-tabs {
+  display: flex;
+  border-bottom: 1px solid #e0e0e0;
+  margin: 0 20px;
+}
+
+.modal-tab {
+  padding: 12px 20px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  font-weight: 500;
+  color: #676758;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+.modal-tab:hover {
+  color: #4CAF50;
+}
+
+.modal-tab.active {
+  border-bottom: 2px solid #4CAF50;
+  color: #4CAF50;
+}
+
+.modal-tab-panel {
+  padding: 20px;
+  display: none;
+}
+
+.modal-tab-panel.active {
+  display: block;
+}
+
+/* Display-only crop cards - UPDATED WITH SMALLER SIZE AND 4 PER ROW */
+.crop-container {
+  width: 100%;
+}
+
+.modal-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 12px; /* Reduced from 15px */
+  background-color: #fff;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  cursor: default;
+}
+
+/* Smaller square photo styling - UPDATED */
+.modal-card-img {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* This makes it square */
+  border-radius: 4px;
+  margin-bottom: 8px; /* Reduced from 10px */
+  background-color: #f0f0f0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  height: 120px; /* Fixed height for square images */
+}
+
+/* Fallback for when no image is available */
+.modal-card-img.no-image {
+  background-color: #f0f0f0;
+  background-image: none;
+}
+
+.modal-card-img.no-image::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 36px; /* Reduced from 48px */
+  height: 36px; /* Reduced from 48px */
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23676758" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.modal-card-img svg {
+  width: 36px; /* Reduced from 48px */
+  height: 36px; /* Reduced from 48px */
+  stroke: #676758;
+  fill: none;
+  z-index: 1;
+}
+
+.modal-card-title {
+  font-weight: bold;
+  margin-bottom: 4px; /* Reduced from 5px */
+  color: #333;
+  font-size: 14px; /* Reduced from default */
+}
+
+.modal-card-subtitle {
+  color: #676758;
+  font-size: 13px; /* Reduced from 14px */
+  margin-bottom: 4px; /* Reduced from 5px */
+}
+
+.modal-card-location {
+  color: #676758;
+  font-size: 13px; /* Reduced from 14px */
+  margin-top: auto;
+}
+
+/* 4 crops per row - UPDATED */
+.modal-card-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Changed from auto-fill to 4 columns */
+  gap: 16px; /* Reduced from 20px */
+}
+
+.modal-reviews-container {
+  padding: 20px;
+}
+
+.review-item {
+  border-bottom: 1px solid #e0e0e0;
+  padding: 15px 0;
+}
+
+.review-item:last-child {
+  border-bottom: none;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.reviewer-name {
+  font-weight: bold;
+  color: #333;
+}
+
+.review-rating {
+  color: #FFC107;
+}
+
+.review-date {
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 8px;
+}
+
+.review-comment {
+  color: #333;
+  line-height: 1.4;
+}
+
+.no-reviews {
+  text-align: center;
+  padding: 40px;
+  color: #999;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 95%;
+    margin: 5% auto;
+  }
+  
+  .modal-profile-section {
+    flex-direction: column;
+  }
+  
+  .modal-profile-left {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+  
+  .modal-avatar {
+    width: 80px;
+    height: 80px;
+    font-size: 36px;
+  }
+  
+  .modal-card-list {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablet */
+    gap: 12px;
+  }
+  
+  .modal-tabs {
+    margin: 0 10px;
+  }
+  
+  .modal-tab {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+  
+  .modal-tab-panel {
+    padding: 15px;
+  }
+  
+  .categories-list {
+    gap: 6px;
+  }
+  
+  .category-tag {
+    padding: 3px 8px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-profile-section {
+    padding: 15px;
+  }
+  
+  .modal-profile-info h1 {
+    font-size: 20px;
+  }
+  
+  .modal-card-list {
+    grid-template-columns: 1fr; /* 1 column on mobile */
+  }
+  
+  .modal-btn-group {
+    flex-direction: column;
+  }
+  
+  .modal-btn-follow, .modal-btn-message {
+    width: 100%;
+    justify-content: center;
+  }
+}

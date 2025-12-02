@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Farmer Directory - F.A.R.M</title>
+  <link rel="stylesheet" href="FarmerDirectory.css" />
+
+</head>
+<body>
+  <div class="container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="FARMLogo.png" alt="FARM Logo" />
+      </div>
+      <nav class="nav-menu" role="navigation" aria-label="Main navigation">
+        <a href="SetCustomerProfile.html" class="nav-item">Profile</a>
+        <a href="#" class="nav-item" aria-current="page">Farmer Directory</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+      <!-- Top divider line -->
+      <div class="divider divider-top"></div>
+
+      <header class="main-header">
+        <span class="page-title" aria-label="Current page: Farmer Directory">Farmer Directory</span> 
+      </header>
+
+      <section class="today-pick-section" aria-label="Today's Pick products">
+
+        <div class="today-pick-topbar">
+          <h1>Today's Pick</h1>
+          <div class="search-box">
+            <input type="search" id="search-input" aria-label="Search products by Field, Crops, etc." placeholder="Search by Business Name, Location, etc..." />
+            <button class="search-btn" aria-label="Search">
+              <svg width="18" height="18" fill="#c4c3ba" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="product-grid" id="farmer-grid" role="list">
+          <!-- Farmer cards will be loaded here dynamically -->
+        </div>
+      </section>
+    </main>
+
+    <aside class="icon-bar">
+      <a href="CustomerMessage.html" class="message-img-btn" aria-label="Messages">
+        <img src="chat-icon.png" alt="Messages" />
+      </a>
+
+      <div class="profile-dropdown-container">
+        <!-- Profile Button as <a> instead of <button> -->
+        <a id="profileBtn" class="profile-img-btn" aria-haspopup="true" aria-expanded="false">
+          <img src="user-icon.png" alt="Profile" />
+          <svg class="arrow-down" width="14" height="14" fill="#676758" viewBox="0 0 24 24">
+            <path d="M7 10l5 5 5-5H7z"/>
+          </svg>
+        </a>
+
+        <!-- Dropdown -->
+        <div id="dropdownMenu" class="dropdown-menu" role="menu">
+          <a href="HomePage.html" class="dropdown-item">Log Out</a>
+        </div>
+      </div>
+    </aside>
+    
+    <!-- Modal for Farmer Profile -->
+    <div id="farmerModal" class="modal">
+      <div class="modal-content">
+        <button class="close-modal" id="closeModal">&times;</button>
+        
+        <!-- REMOVED HEADER SECTION -->
+        
+        <div class="modal-profile-section">
+          <div class="modal-profile-left">
+            <div class="modal-avatar" id="modalAvatar">
+              <!-- First letter of business name -->
+            </div>
+            
+            <div class="modal-profile-info">
+              <h1 id="modalFarmerBusinessName">Business Name</h1>
+              <small id="modalFarmerLocation">Location</small>
+              <small id="modalFarmerJoined">Joined Date</small>
+              
+              <div class="modal-subinfo" aria-label="Ratings and stats">
+                <div class="stats">
+                  <span id="modalFarmerReviews">0</span> <small>Reviews</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="modal-profile-right" aria-label="Farm Description and Actions">
+            <div class="modal-description">
+              <strong>Description</strong>
+              <span id="modalFarmerDescription">Loading farmer description...</span>
+            </div>
+            
+            <div class="modal-categories">
+              <strong>Crop Categories</strong>
+              <div id="modalCategories" class="categories-list">
+                <!-- Categories will be loaded here -->
+              </div>
+            </div>
+            
+            <div class="modal-btn-group">
+              <button class="modal-btn-follow" type="button" aria-label="Follow Farm">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 5v14m7-7H5" stroke="#333" stroke-width="2" stroke-linecap="round" />
+                </svg>
+                Follow
+              </button>
+              
+              <a href="CustomerMessage.html" class="modal-btn-message" aria-label="Message Farm">
+                <img src="chat-icon.png" alt="Message Icon" />
+                Message
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="modal-tabs">
+          <div class="modal-tab active" data-tab="crops">Crops</div>
+          <div class="modal-tab" data-tab="reviews">Reviews</div>
+        </div>
+        
+        <div class="modal-tab-panel active" id="modal-crops-panel">
+          <div class="modal-card-list" id="modal-crops-list">
+            <!-- Crops will be loaded here dynamically -->
+          </div>
+        </div>
+        
+        <div class="modal-tab-panel" id="modal-reviews-panel">
+          <div class="modal-reviews-container">
+            <div id="modal-reviews-list">Loading reviews...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Supabase Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.0"></script>
+    <script src="FarmerDirectory.js"></script>
+
+</body>
+</html>

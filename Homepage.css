@@ -1,0 +1,290 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    color: #333;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    background: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 80px;
+    margin-right: 10px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #1d1d1d;
+    font-size: 20px;
+}
+
+.nav-links a.active,
+.nav-links a:hover {
+    border-bottom: 2px solid #2e6d3d;
+    padding-bottom: 5px;
+}
+
+/* Hero Background Image FIXED */
+.hero {
+    width: 100%;
+    height: 100vh;
+    background-image: url('HomePageBackground.jpg');  /* <-- put your background here */
+    background-size: cover;                   
+    background-repeat: no-repeat;
+    background-position: center;              /* FIX: centers properly */
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.25);
+    top: 0;
+    left: 0;
+}
+
+.hero-content {
+    position: relative;
+    text-align: center;
+    color: white;
+    max-width: 800px;
+    padding: 20px;
+    margin: 0 auto;
+    top: 35%;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.hero-content a{
+    font-weight: bolder;
+}
+.cta-btn {
+    padding: 12px 30px;
+    font-size: 16px;
+    background-color: #ffe774;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: bold;
+}
+
+.cta-btn:hover {
+    background-color: #ffdd45;
+}
+
+/* ABOUT PAGE WITH BACKGROUND IMAGE */
+.about-hero {
+    width: 100%;
+    height: 100vh;
+    background-image: url('AboutPageBackground.jpg'); /* <-- your farmer image */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right center; /* shows the farmer on the right */
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 80px;
+}
+.hero-btn {
+    display: inline-block;
+    background-color: #F1E58B; /* your yellow button color */
+    color: #2F4F2F; /* your dark green text */
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none; /* removes underline */
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.hero-btn:hover {
+    background-color: #e2d679;
+}
+
+
+.about-hero .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.about-content {
+    position: relative;
+    max-width: 50%;
+    color: #333;
+}
+
+.about-content h1 {
+    font-size: 5rem;
+    color: #2e6d3d;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.about-content h3 {
+    font-size: 1.5rem;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+.about-content p {
+    font-size: 1.2rem;
+    line-height: 1.7rem;
+    color: #333;
+}
+
+/* CONTACT PAGE */
+
+.contact-page {
+    display: flex;
+    justify-content: center;   /* center left + right columns */
+    align-items: center;       /* vertically center the whole block */
+    gap: 120px;                /* spacing between text and form */
+    min-height: 100vh;         /* full screen height */
+    padding: 0 40px;           /* slight side padding */
+    position: relative;
+}
+
+
+
+.contact-left {
+    width: 45%;
+}
+
+.contact-left h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #2e6d3d;
+}
+
+.contact-left h3 {
+    font-size: 1.3rem;
+    color: #555;
+    margin-top: 10px;
+}
+
+.contact-socials {
+    margin-top: 80px;
+}
+
+.contact-socials img {
+    width: 32px;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.social-icons {
+    position: fixed;
+    bottom: 25px;
+    left: 25px;
+    display: flex;
+    gap: 18px;
+    z-index: 999;
+}
+
+.social-icons img {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+
+
+/* FORM RIGHT SIDE */
+.contact-form {
+    width: 45%;
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.name-fields {
+    display: flex;
+    gap: 20px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.field label {
+    font-size: 0.85rem;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.field input,
+.field textarea {
+    padding: 10px;
+    border: 1.5px solid #b5b5b5;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.field textarea {
+    height: 140px;
+    resize: none;
+}
+
+.submit-btn {
+    padding: 12px 20px;
+    background: #2e6d3d;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    width: 150px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    background: #255c33;
+}

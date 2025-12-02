@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard – FARM</title>
+    <link rel="stylesheet" href="FarmerDashboard.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="FARMLogo.png" alt="FARM Logo">
+            </div>
+
+            <nav class="nav-menu">
+                <a href="FarmerViewProfile.html">Profile</a>
+                <a class="active" href="#">Overview</a>
+            </nav>
+        </aside>
+
+        <!-- MAIN -->
+        <main class="main-content">
+
+            <!-- ICON BAR -->
+            <aside class="icon-bar">
+                <a href="FarmerMessage.html" class="message-img-btn">
+                    <img src="chat-icon.png" alt="Messages">
+                </a>
+
+                <div class="profile-dropdown-container">
+                    <button id="profileBtn" class="profile-img-btn">
+                        <img src="user-icon.png" alt="Profile">
+                    </button>
+
+                    <div id="dropdownMenu" class="dropdown-menu">
+                        <a href="HomePage.html" class="dropdown-item">Log Out</a>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                Overview <span>></span> Dashboard
+            </div>
+
+            <div class="divider-top"></div>
+
+            <h2 class="section-title">This Week</h2>
+
+            <!-- Top Statistic Cards -->
+            <!-- Metrics (Moved Above Graphs) -->
+            <div class="metrics-row">
+                <div class="metric" data-type="air">
+                    <p>Air Quality</p>
+                    <h3>0%</h3>
+                    <p class="label"></p>
+                </div>
+
+                <div class="metric" data-type="rain">
+                    <p>Rainfall</p>
+                    <h3>-- mm</h3>
+                    <p class="rain-label"></p>
+                </div>
+
+                <div class="metric" data-type="heat">
+                    <p>Heat Index</p>
+                    <h3>--°C</h3>
+                    <p class="heat-label"></p>
+                </div>
+            </div>
+
+            <!-- Graph Layout -->
+            <!-- Middle Text Section -->
+            <div class="text-cards-container">
+
+                <div class="text-card p1">
+                    <h3>Optimal Pricing Suggestion</h3>
+                    <p>₱310 - ₱330 / Ton</p>
+                    <small>Based on regional demand and market activity.</small>
+                </div>
+
+                <div class="text-card p2">
+                    <h3>High-Demand Crop Alert</h3>
+                    <p>Organic Soy</p>
+                    <small>Demand has increased 15% in the last 48 hours.</small>
+                </div>
+
+                <div class="text-card p3">
+                    <h3>Best Time to Post</h3>
+                    <p>Tuesdays, 9:00 AM PST</p>
+                    <small>73% of buyers log in before 10 AM.</small>
+                </div>
+
+                <div class="text-card p4">
+                    <h3>Inventory Balancing Tips</h3>
+                    <p>Bundle Wheat & Corn</p>
+                    <small>Offer a discount to move surplus stock.</small>
+                </div>
+
+            </div>
+
+
+
+
+            <!-- Metrics -->
+           <!-- Lower Logo Row -->
+            <div class="metrics-row logos-row">
+
+                <a href="https://www.da.gov.ph/" target="_blank" class="logo-box">
+                    <img src="DeptAgriLogo.png" alt="Logo 1">
+                    <p>Department Of Agriculture</p>
+                </a>
+
+                <a href="https://bagong.pagasa.dost.gov.ph/agri-weather#-" target="_blank" class="logo-box">
+                    <img src="PAGASALogo.png" alt="Logo 2">
+                    <p>Farm Weather Forecast</p>
+                </a>
+
+                <a href="https://www.da.gov.ph/price-monitoring/" target="_blank" class="logo-box">
+                    <img src="PriceUpdatesLogo.png" alt="Logo 3">
+                    <p>Crops Price Monitoring</p>
+                </a>
+
+            </div>
+
+
+
+
+        </main>
+
+        <!-- RIGHT WEATHER SIDEBAR -->
+        <aside class="right-sidebar">
+
+            <div class="weather-card">
+                <h1 id="day1-date">21</h1>
+                <p class="month" id="day1-month">November</p>
+                <div class="temp-box">
+                    <span class="temp" id="day1-temp">0°</span>
+                    <span class="desc" id="day1-desc">Mostly ---</span>
+                </div>
+            </div>
+
+            <div class="weather-card">
+                <h1 id="day2-date">22</h1>
+                <p class="month" id="day2-month">November</p>
+                <div class="temp-box">
+                    <span class="temp" id="day2-temp">0°</span>
+                    <span class="desc" id="day2-desc">Mostly ---</span>
+                </div>
+            </div>
+
+            <div class="weather-card">
+                <h1 id="day3-date">23</h1>
+                <p class="month" id="day3-month">November</p>
+                <div class="temp-box">
+                    <span class="temp" id="day3-temp">0°</span>
+                    <span class="desc" id="day3-desc">Mostly ---</span>
+                </div>
+            </div>
+
+        </aside>
+    </div>
+
+    <script>
+        // Dropdown toggle
+    const profileBtn = document.getElementById("profileBtn");
+    const dropdownMenu = document.getElementById("dropdownMenu");
+
+    profileBtn.addEventListener("click", () => {
+        dropdownMenu.style.display =
+            dropdownMenu.style.display === "flex" ? "none" : "flex";
+    });
+
+    document.addEventListener("click", (e) => {
+        if (!profileBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+            dropdownMenu.style.display = "none";
+        }
+    });
+
+    const API_KEY = "c808ae1a3efb9ae9248b1c893e5f6645"; 
+    const CITY = "Batangas,PH";
+
+    // WEATHER
+    async function loadWeather() {
+        try {
+            const url = `https://api.openweathermap.org/data/2.5/forecast?q=${CITY}&units=metric&appid=${API_KEY}`;
+            const res = await fetch(url);
+            const data = await res.json();
+
+            let days = {};
+
+            data.list.forEach(entry => {
+                const date = new Date(entry.dt_txt);
+                const d = date.getDate();
+                if (!days[d]) days[d] = entry;
+            });
+
+            const sorted = Object.keys(days).slice(0, 3);
+
+            sorted.forEach((day, i) => {
+                const info = days[day];
+
+                document.getElementById(`day${i+1}-date`).textContent = day;
+
+                document.getElementById(`day${i+1}-month`).textContent =
+                    new Date(info.dt_txt).toLocaleString("en-US", { month: "long" });
+
+                document.getElementById(`day${i+1}-temp`).textContent =
+                    Math.round(info.main.temp) + "°";
+
+                document.getElementById(`day${i+1}-desc`).textContent =
+                    info.weather[0].description;
+            });
+
+        } catch (error) {
+            console.error("Weather fetch failed:", error);
+        }
+    }
+
+
+    async function loadAirQuality(lat = 13.7565, lon = 121.0583) {
+        const url = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
+
+        try {
+            const res = await fetch(url);
+            const data = await res.json();
+
+            const aqi = data.list[0].main.aqi;
+
+            // Convert AQI (1–5) → % (100–20)
+            const percent = Math.round((6 - aqi) * 20);
+
+            // Update number
+            const airQualityElement = document.querySelector(".metric:nth-child(1) h3");
+            airQualityElement.textContent = percent + "%";
+
+            // Also update top metrics
+            const airTop = document.querySelector("[data-type='air-top'] h3");
+            if (airTop) airTop.textContent = percent + "%";
+
+            // CATEGORY LABEL LOGIC
+            let category = "";
+            if (percent >= 80) category = "Good";
+            else if (percent >= 60) category = "Fair";
+            else if (percent >= 40) category = "Moderate";
+            else if (percent >= 20) category = "Poor";
+            else category = "Very Poor";
+
+            // Add category under the % result
+            airQualityElement.nextElementSibling?.remove(); // remove existing label if any
+
+            const label = document.createElement("p");
+            label.style.fontSize = "13px";
+            label.style.color = "#6a6a6a";
+            label.textContent = category;
+
+            airQualityElement.parentNode.appendChild(label);
+
+        } catch (error) {
+            console.error("Air Quality fetch failed:", error);
+        }
+    }
+
+    async function loadRain(lat = 13.7565, lon = 121.0583) {
+        const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=precipitation`;
+
+        try {
+            const res = await fetch(url);
+            const data = await res.json();
+
+            const list = data.hourly.precipitation;
+            const latest = list[list.length - 1];
+
+            const valueElement = document.querySelector("[data-type='rain'] h3");
+            const labelElement = document.querySelector("[data-type='rain'] .rain-label");
+
+            // When no value exists
+            if (latest === null || latest === undefined) {
+                valueElement.textContent = "-- mm";
+                labelElement.textContent = "No Data";
+                return;
+            }
+
+            valueElement.textContent = latest + " mm";
+
+            // Determine category
+            let category = "";
+
+            if (latest === 0) category = "No Rain";
+            else if (latest > 0 && latest <= 2) category = "Light Rain";
+            else if (latest > 2 && latest <= 10) category = "Moderate Rain";
+            else if (latest > 10 && latest <= 50) category = "Heavy Rain";
+            else category = "Storm / Extreme Rain";
+
+            labelElement.textContent = category;
+
+        } catch (error) {
+            console.error("Rainfall fetch failed:", error);
+        }
+    }
+
+    async function loadHeatIndex(city = CITY) {
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`;
+
+        try {
+            const res = await fetch(url);
+            const data = await res.json();
+
+            const T = data.main.temp;        // Temperature in °C
+            const H = data.main.humidity;    // Humidity %
+
+            // Convert to Fahrenheit (for heat index formula)
+            const Tf = (T * 9/5) + 32;
+
+            // NOAA Heat Index Formula (Fahrenheit)
+            const HI_F =
+                -42.379 +
+                2.04901523 * Tf +
+                10.14333127 * H -
+                0.22475541 * Tf * H -
+                0.00683783 * Tf * Tf -
+                0.05481717 * H * H +
+                0.00122874 * Tf * Tf * H +
+                0.00085282 * Tf * H * H -
+                0.00000199 * Tf * Tf * H * H;
+
+            // Convert back to °C
+            const HI_C = (HI_F - 32) * 5/9;
+
+            // Update UI
+            const heatElement = document.querySelector("[data-type='heat'] h3");
+            const labelElement = document.querySelector("[data-type='heat'] .heat-label");
+
+            heatElement.textContent = HI_C.toFixed(1) + "°C";
+
+            // CATEGORY
+            let category = "";
+
+            if (HI_C < 27) category = "Comfortable";
+            else if (HI_C < 32) category = "Caution";
+            else if (HI_C < 41) category = "Extreme Caution";
+            else if (HI_C < 54) category = "Danger";
+            else category = "Extreme Danger";
+
+            labelElement.textContent = category;
+
+        } catch (error) {
+            console.error("Heat Index fetch failed:", error);
+        }
+    }
+
+    loadWeather();
+    loadAirQuality();
+    loadRain();
+    loadHeatIndex();
+    </script>
+</body>
+</html>
